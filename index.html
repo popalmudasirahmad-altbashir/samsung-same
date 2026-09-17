@@ -1,0 +1,2798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SAMSUNG SAME</title>
+
+<style>
+:root{
+  --black:#020202;
+  --black2:#080808;
+  --black3:#101010;
+
+  --white:#ffffff;
+  --soft:#dcdcdc;
+  --gray:#777;
+
+  --red:#ff1010;
+  --red2:#b90000;
+
+  --yellow:#d6a900;
+  --yellow2:#ffcc00;
+
+  --blue:#008cff;
+  --blue2:#00d9ff;
+}
+
+/* =========================
+   RESET
+========================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  min-height:100vh;
+  overflow-x:hidden;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  color:white;
+
+  background:
+    radial-gradient(
+      circle at 50% -10%,
+      rgba(214,169,0,.20),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 10% 30%,
+      rgba(0,140,255,.14),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 90% 70%,
+      rgba(0,210,255,.10),
+      transparent 32%
+    ),
+    linear-gradient(
+      145deg,
+      #010101,
+      #090909 48%,
+      #020202
+    );
+
+  background-attachment:fixed;
+}
+
+
+/* =========================
+   BLUE MOVING LIGHT
+========================= */
+
+body::before{
+  content:"";
+
+  position:fixed;
+
+  width:430px;
+  height:430px;
+
+  left:-180px;
+  top:35%;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(0,170,255,.25),
+      rgba(0,90,255,.08),
+      transparent 70%
+    );
+
+  filter:blur(25px);
+
+  animation:
+    blueMove 9s ease-in-out infinite alternate;
+
+  pointer-events:none;
+
+  z-index:-1;
+}
+
+body::after{
+  content:"";
+
+  position:fixed;
+
+  width:500px;
+  height:500px;
+
+  right:-230px;
+  top:10%;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(0,220,255,.18),
+      transparent 68%
+    );
+
+  filter:blur(35px);
+
+  animation:
+    blueMove2 12s ease-in-out infinite alternate;
+
+  pointer-events:none;
+
+  z-index:-1;
+}
+
+@keyframes blueMove{
+
+  0%{
+    transform:
+      translate3d(0,0,0)
+      scale(1);
+  }
+
+  50%{
+    transform:
+      translate3d(280px,-80px,0)
+      scale(1.35);
+  }
+
+  100%{
+    transform:
+      translate3d(600px,100px,0)
+      scale(.9);
+  }
+
+}
+
+@keyframes blueMove2{
+
+  0%{
+    transform:
+      translate3d(0,0,0)
+      scale(.8);
+  }
+
+  50%{
+    transform:
+      translate3d(-260px,180px,0)
+      scale(1.25);
+  }
+
+  100%{
+    transform:
+      translate3d(-500px,420px,0)
+      scale(.7);
+  }
+
+}
+
+
+/* =========================
+   TOP BAR
+========================= */
+
+.topbar{
+
+  position:fixed;
+
+  top:13px;
+  left:13px;
+  right:13px;
+
+  height:58px;
+
+  z-index:5000;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  pointer-events:none;
+}
+
+.topbar button{
+  pointer-events:auto;
+}
+
+
+/* =========================
+   ALL BUTTONS
+========================= */
+
+button{
+
+  font-family:inherit;
+
+  cursor:pointer;
+
+  color:white;
+
+  background:#000;
+
+  border:
+    1px solid white;
+
+  transition:
+    .25s ease;
+
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.05),
+    0 0 20px rgba(0,140,255,.08);
+
+}
+
+button:hover{
+
+  background:white;
+
+  color:black;
+
+  box-shadow:
+    0 0 25px rgba(0,190,255,.35);
+
+  transform:
+    translateY(-2px);
+}
+
+button:active{
+
+  transform:
+    scale(.94);
+
+}
+
+
+/* =========================
+   BLUE TOUCH RIPPLE
+========================= */
+
+.ripple{
+  position:fixed;
+
+  width:20px;
+  height:20px;
+
+  border-radius:50%;
+
+  pointer-events:none;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(0,220,255,.45),
+      rgba(0,130,255,.15),
+      transparent 70%
+    );
+
+  transform:
+    translate(-50%,-50%)
+    scale(1);
+
+  animation:
+    ripple .7s ease-out forwards;
+
+  z-index:9999;
+}
+
+@keyframes ripple{
+
+  to{
+    width:350px;
+    height:350px;
+
+    opacity:0;
+  }
+
+}
+
+
+/* =========================
+   MENU BUTTON
+========================= */
+
+.menuButton{
+
+  width:55px;
+  height:55px;
+
+  border-radius:17px;
+
+  font-size:24px;
+
+  font-weight:900;
+
+  border-color:var(--red);
+
+  box-shadow:
+    0 0 18px rgba(255,0,0,.18),
+    0 0 25px rgba(0,150,255,.10);
+
+}
+
+
+/* =========================
+   SEARCH BUTTON
+========================= */
+
+.searchButton{
+
+  width:55px;
+  height:55px;
+
+  border-radius:17px;
+
+  font-size:25px;
+
+  border-color:white;
+
+  position:relative;
+
+}
+
+.searchButton::after{
+
+  content:"";
+
+  position:absolute;
+
+  inset:-5px;
+
+  border-radius:20px;
+
+  border:
+    1px solid rgba(0,180,255,.25);
+
+  animation:
+    searchGlow 2.5s infinite;
+
+}
+
+@keyframes searchGlow{
+
+  0%,100%{
+    opacity:.2;
+    transform:scale(1);
+  }
+
+  50%{
+    opacity:.8;
+    transform:scale(1.08);
+  }
+
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+main{
+
+  width:100%;
+
+  padding-top:95px;
+
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+
+  max-width:1200px;
+
+  margin:auto;
+
+  padding:
+    25px
+    20px
+    35px;
+
+  position:relative;
+
+}
+
+.heroLine{
+
+  height:2px;
+
+  width:100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--red),
+      white,
+      var(--yellow2),
+      var(--blue2),
+      transparent
+    );
+
+  box-shadow:
+    0 0 18px rgba(0,170,255,.45);
+
+  margin-bottom:30px;
+}
+
+
+.brand{
+
+  display:inline-flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  padding:
+    10px
+    16px;
+
+  border:
+    1px solid var(--red);
+
+  background:#000;
+
+  border-radius:15px;
+
+  font-weight:1000;
+
+  letter-spacing:2px;
+
+  box-shadow:
+    0 0 20px rgba(255,0,0,.15),
+    0 0 25px rgba(0,150,255,.10);
+
+}
+
+.brandDot{
+
+  width:9px;
+  height:9px;
+
+  border-radius:50%;
+
+  background:
+    var(--yellow2);
+
+  box-shadow:
+    0 0 15px var(--yellow2);
+
+}
+
+
+.hero h1{
+
+  margin-top:28px;
+
+  font-size:
+    clamp(55px,12vw,125px);
+
+  line-height:.82;
+
+  letter-spacing:
+    -6px;
+
+  font-weight:1000;
+
+}
+
+.hero h1 span{
+
+  color:#555;
+
+}
+
+.heroDescription{
+
+  max-width:650px;
+
+  margin-top:25px;
+
+  color:#999;
+
+  line-height:1.7;
+
+  font-size:15px;
+
+}
+
+
+/* =========================
+   SEARCH PANEL
+========================= */
+
+.searchPanel{
+
+  position:fixed;
+
+  top:83px;
+
+  left:50%;
+
+  transform:
+    translateX(-50%)
+    translateY(-20px);
+
+  width:
+    min(92%,650px);
+
+  z-index:4500;
+
+  opacity:0;
+
+  visibility:hidden;
+
+  transition:.3s;
+
+}
+
+.searchPanel.active{
+
+  opacity:1;
+
+  visibility:visible;
+
+  transform:
+    translateX(-50%)
+    translateY(0);
+
+}
+
+.searchBox{
+
+  padding:13px;
+
+  border:
+    1px solid var(--red);
+
+  border-radius:20px;
+
+  background:
+    rgba(0,0,0,.94);
+
+  box-shadow:
+    0 20px 70px rgba(0,0,0,.8),
+    0 0 35px rgba(0,150,255,.15);
+
+}
+
+.searchBox input{
+
+  width:100%;
+
+  height:52px;
+
+  border:
+    1px solid white;
+
+  border-radius:14px;
+
+  outline:none;
+
+  background:#050505;
+
+  color:white;
+
+  padding:
+    0 16px;
+
+  font-size:16px;
+
+}
+
+.searchBox input:focus{
+
+  border-color:
+    var(--blue2);
+
+  box-shadow:
+    0 0 20px rgba(0,200,255,.2);
+
+}
+
+
+/* =========================
+   SERIES NAV
+========================= */
+
+.seriesArea{
+
+  max-width:1200px;
+
+  margin:auto;
+
+  padding:
+    0 20px
+    10px;
+
+}
+
+.seriesScroll{
+
+  display:flex;
+
+  gap:10px;
+
+  overflow-x:auto;
+
+  scrollbar-width:none;
+
+  padding:
+    4px
+    2px
+    15px;
+
+}
+
+.seriesScroll::-webkit-scrollbar{
+  display:none;
+}
+
+.seriesButton{
+
+  flex:
+    0 0 auto;
+
+  padding:
+    12px
+    18px;
+
+  border-radius:14px;
+
+  font-weight:1000;
+
+  letter-spacing:.7px;
+
+  border-color:
+    white;
+
+}
+
+.seriesButton.active{
+
+  background:white;
+
+  color:black;
+
+  border-color:
+    var(--red);
+
+  box-shadow:
+    0 0 20px rgba(255,0,0,.25),
+    0 0 30px rgba(0,180,255,.15);
+
+}
+
+
+/* =========================
+   YELLOW FEATURE
+========================= */
+
+.yellowFeature{
+
+  max-width:1200px;
+
+  margin:
+    20px auto
+    25px;
+
+  padding:
+    0 20px;
+
+}
+
+.yellowBox{
+
+  min-height:230px;
+
+  position:relative;
+
+  overflow:hidden;
+
+  border:
+    1px solid var(--red);
+
+  border-radius:28px;
+
+  padding:30px;
+
+  background:
+
+    radial-gradient(
+      circle at 75% 35%,
+      rgba(255,204,0,.34),
+      transparent 35%
+    ),
+
+    radial-gradient(
+      circle at 10% 90%,
+      rgba(0,150,255,.20),
+      transparent 40%
+    ),
+
+    linear-gradient(
+      135deg,
+      #151000,
+      #080808 48%,
+      #020202
+    );
+
+  box-shadow:
+    inset 0 0 50px rgba(214,169,0,.06),
+    0 0 30px rgba(255,0,0,.08),
+    0 0 45px rgba(0,140,255,.08);
+
+}
+
+.yellowBox::before{
+
+  content:"";
+
+  position:absolute;
+
+  width:300px;
+  height:300px;
+
+  right:-80px;
+  top:-150px;
+
+  border-radius:50%;
+
+  border:
+    1px solid rgba(0,190,255,.35);
+
+  box-shadow:
+    0 0 50px rgba(0,180,255,.15);
+
+  animation:
+    orbit 7s linear infinite;
+
+}
+
+@keyframes orbit{
+
+  to{
+    transform:
+      rotate(360deg);
+  }
+
+}
+
+.yellowTag{
+
+  display:inline-block;
+
+  padding:
+    7px
+    11px;
+
+  border:
+    1px solid white;
+
+  border-radius:999px;
+
+  background:#000;
+
+  font-size:10px;
+
+  font-weight:1000;
+
+  letter-spacing:1px;
+
+}
+
+.yellowBox h2{
+
+  margin-top:20px;
+
+  max-width:700px;
+
+  font-size:
+    clamp(30px,6vw,58px);
+
+  line-height:.95;
+
+}
+
+.yellowBox p{
+
+  margin-top:15px;
+
+  max-width:650px;
+
+  color:#aaa;
+
+  line-height:1.6;
+
+}
+
+
+/* =========================
+   COLLECTION
+========================= */
+
+.collection{
+
+  max-width:1200px;
+
+  margin:auto;
+
+  padding:
+    15px 20px
+    50px;
+
+}
+
+.collectionHeader{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:end;
+
+  margin-bottom:18px;
+
+}
+
+.collectionHeader h2{
+
+  font-size:27px;
+
+}
+
+.collectionHeader span{
+
+  color:#666;
+
+  font-size:11px;
+
+}
+
+
+/* =========================
+   MODEL GRID
+========================= */
+
+.modelGrid{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:15px;
+
+}
+
+.modelCard{
+
+  position:relative;
+
+  min-height:230px;
+
+  padding:20px;
+
+  overflow:hidden;
+
+  cursor:pointer;
+
+  border:
+    1px solid var(--red);
+
+  border-radius:24px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #101010,
+      #030303
+    );
+
+  box-shadow:
+    0 0 20px rgba(0,0,0,.5);
+
+  transition:
+    .3s;
+
+}
+
+.modelCard::before{
+
+  content:"";
+
+  position:absolute;
+
+  width:220px;
+  height:220px;
+
+  right:-100px;
+  top:-110px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(0,180,255,.20),
+      transparent 68%
+    );
+
+  filter:blur(8px);
+
+  transition:.4s;
+
+}
+
+.modelCard:hover{
+
+  transform:
+    translateY(-7px);
+
+  border-color:
+    var(--red);
+
+  box-shadow:
+    0 15px 45px rgba(0,0,0,.8),
+    0 0 28px rgba(0,150,255,.16);
+
+}
+
+.modelCard:hover::before{
+
+  transform:
+    scale(1.5);
+
+}
+
+.cardTop{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  position:relative;
+
+  z-index:2;
+
+}
+
+.seriesBadge{
+
+  border:
+    1px solid white;
+
+  border-radius:999px;
+
+  padding:
+    5px 9px;
+
+  font-size:10px;
+
+  font-weight:1000;
+
+}
+
+.newBadge{
+
+  border:
+    1px solid var(--yellow2);
+
+  color:
+    var(--yellow2);
+
+  border-radius:999px;
+
+  padding:
+    5px 9px;
+
+  font-size:9px;
+
+  font-weight:1000;
+
+}
+
+.modelCard small{
+
+  display:block;
+
+  margin-top:30px;
+
+  color:#666;
+
+  letter-spacing:2px;
+
+  font-size:10px;
+
+}
+
+.modelCard h3{
+
+  margin-top:8px;
+
+  font-size:25px;
+
+  position:relative;
+
+  z-index:2;
+
+}
+
+.modelInfo{
+
+  position:absolute;
+
+  bottom:18px;
+  left:20px;
+
+  color:#777;
+
+  font-size:11px;
+
+}
+
+.openArrow{
+
+  position:absolute;
+
+  right:17px;
+  bottom:13px;
+
+  width:43px;
+  height:43px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  border:
+    1px solid white;
+
+  border-radius:14px;
+
+  background:#000;
+
+  font-size:20px;
+
+}
+
+
+/* =========================
+   SIDE MENU
+========================= */
+
+.menuOverlay{
+
+  position:fixed;
+
+  inset:0;
+
+  z-index:6000;
+
+  background:
+    rgba(0,0,0,.72);
+
+  backdrop-filter:
+    blur(15px);
+
+  opacity:0;
+
+  visibility:hidden;
+
+  transition:.3s;
+
+}
+
+.menuOverlay.active{
+
+  opacity:1;
+
+  visibility:visible;
+
+}
+
+.menuPanel{
+
+  width:
+    min(390px,88vw);
+
+  height:100%;
+
+  padding:
+    90px 20px
+    25px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #0b0b0b,
+      #020202
+    );
+
+  border-right:
+    2px solid var(--red);
+
+  box-shadow:
+    20px 0 80px rgba(0,0,0,.9),
+    10px 0 40px rgba(0,150,255,.08);
+
+  transform:
+    translateX(-100%);
+
+  transition:.4s;
+
+}
+
+.menuOverlay.active .menuPanel{
+
+  transform:
+    translateX(0);
+
+}
+
+.menuLogo{
+
+  font-size:30px;
+
+  font-weight:1000;
+
+  margin-bottom:30px;
+
+}
+
+.menuLogo span{
+
+  color:var(--red);
+
+}
+
+.menuItem{
+
+  width:100%;
+
+  min-height:53px;
+
+  margin-bottom:10px;
+
+  text-align:left;
+
+  padding:
+    0 17px;
+
+  border-radius:15px;
+
+  font-weight:1000;
+
+  letter-spacing:.5px;
+
+}
+
+.menuItem.yellow{
+
+  border-color:
+    var(--yellow2);
+
+}
+
+
+/* =========================
+   DETAIL PAGE
+========================= */
+
+.detailPage{
+
+  position:fixed;
+
+  inset:0;
+
+  z-index:7000;
+
+  overflow-y:auto;
+
+  background:
+
+    radial-gradient(
+      circle at 50% 10%,
+      rgba(214,169,0,.18),
+      transparent 30%
+    ),
+
+    radial-gradient(
+      circle at 10% 70%,
+      rgba(0,170,255,.13),
+      transparent 35%
+    ),
+
+    #020202;
+
+  opacity:0;
+
+  visibility:hidden;
+
+  transition:.3s;
+
+}
+
+.detailPage.active{
+
+  opacity:1;
+
+  visibility:visible;
+
+}
+
+.detailTop{
+
+  position:sticky;
+
+  top:0;
+
+  z-index:5;
+
+  height:75px;
+
+  padding:
+    13px 17px;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  background:
+    rgba(0,0,0,.86);
+
+  backdrop-filter:
+    blur(15px);
+
+  border-bottom:
+    1px solid var(--red);
+
+}
+
+.detailButton{
+
+  width:48px;
+  height:48px;
+
+  border-radius:15px;
+
+  font-size:20px;
+
+}
+
+.detailContent{
+
+  max-width:1000px;
+
+  margin:auto;
+
+  padding:
+    30px 20px
+    70px;
+
+}
+
+.detailSeries{
+
+  color:#777;
+
+  font-size:11px;
+
+  letter-spacing:3px;
+
+}
+
+.detailName{
+
+  margin-top:10px;
+
+  font-size:
+    clamp(45px,9vw,90px);
+
+  line-height:.9;
+
+  letter-spacing:-4px;
+
+}
+
+.bigImageBox{
+
+  margin:
+    35px auto;
+
+  max-width:650px;
+
+  min-height:440px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  overflow:hidden;
+
+  border:
+    1px solid var(--red);
+
+  border-radius:30px;
+
+  background:
+
+    radial-gradient(
+      circle,
+      rgba(0,160,255,.12),
+      transparent 60%
+    ),
+
+    #050505;
+
+  box-shadow:
+    0 20px 80px rgba(0,0,0,.9),
+    0 0 40px rgba(255,0,0,.08);
+
+}
+
+.bigImageBox img{
+
+  display:block;
+
+  width:100%;
+
+  max-height:750px;
+
+  object-fit:contain;
+
+}
+
+.noImage{
+
+  text-align:center;
+
+  color:#666;
+
+  padding:50px;
+
+}
+
+.infoGrid{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:12px;
+
+}
+
+.infoBox{
+
+  padding:18px;
+
+  border:
+    1px solid var(--red);
+
+  border-radius:18px;
+
+  background:#070707;
+
+}
+
+.infoBox span{
+
+  display:block;
+
+  color:#666;
+
+  font-size:9px;
+
+  letter-spacing:2px;
+
+  margin-bottom:8px;
+
+}
+
+.infoBox strong{
+
+  font-size:15px;
+
+}
+
+.descriptionBox{
+
+  margin-top:14px;
+
+  padding:20px;
+
+  border:
+    1px solid var(--red);
+
+  border-radius:19px;
+
+  background:#070707;
+
+  color:#aaa;
+
+  line-height:1.7;
+
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+
+  max-width:1200px;
+
+  margin:auto;
+
+  padding:
+    35px 20px
+    55px;
+
+  border-top:
+    1px solid #222;
+
+  color:#555;
+
+  font-size:11px;
+
+}
+
+footer strong{
+
+  color:white;
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:760px){
+
+  .topbar{
+
+    top:9px;
+
+    left:9px;
+    right:9px;
+
+  }
+
+  .menuButton,
+  .searchButton{
+
+    width:51px;
+    height:51px;
+
+  }
+
+  main{
+
+    padding-top:85px;
+
+  }
+
+  .hero{
+
+    padding:
+      25px 17px
+      30px;
+
+  }
+
+  .hero h1{
+
+    letter-spacing:-3px;
+
+  }
+
+  .yellowFeature{
+
+    padding:
+      0 15px;
+
+  }
+
+  .yellowBox{
+
+    padding:24px;
+
+  }
+
+  .collection{
+
+    padding:
+      10px 15px
+      45px;
+
+  }
+
+  .modelGrid{
+
+    grid-template-columns:1fr;
+
+  }
+
+  .modelCard{
+
+    min-height:205px;
+
+  }
+
+  .infoGrid{
+
+    grid-template-columns:1fr;
+
+  }
+
+  .bigImageBox{
+
+    min-height:390px;
+
+  }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     FIXED TOP BAR
+========================= -->
+
+<header class="topbar">
+
+  <button
+    class="menuButton"
+    id="menuButton"
+    aria-label="Menu">
+    ☰
+  </button>
+
+  <button
+    class="searchButton"
+    id="searchButton"
+    aria-label="Search">
+    ⌕
+  </button>
+
+</header>
+
+
+<!-- =========================
+     SEARCH PANEL
+========================= -->
+
+<div
+  class="searchPanel"
+  id="searchPanel">
+
+  <div class="searchBox">
+
+    <input
+      id="searchInput"
+      type="text"
+      placeholder="Search Samsung model..."
+      autocomplete="off">
+
+  </div>
+
+</div>
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main>
+
+
+<section class="hero">
+
+  <div class="heroLine"></div>
+
+  <div class="brand">
+
+    <span class="brandDot"></span>
+
+    M POPAL
+
+  </div>
+
+  <h1>
+
+    SAMSUNG
+    <br>
+
+    <span>SAME.</span>
+
+  </h1>
+
+  <p class="heroDescription">
+
+    A futuristic collection of famous,
+    new and important Samsung Galaxy
+    models — all in one place.
+
+  </p>
+
+</section>
+
+
+<!-- =========================
+     SERIES
+========================= -->
+
+<section class="seriesArea">
+
+  <div class="seriesScroll">
+
+    <button
+      class="seriesButton active"
+      data-series="ALL">
+
+      ALL
+
+    </button>
+
+    <button
+      class="seriesButton"
+      data-series="S">
+
+      S
+
+    </button>
+
+    <button
+      class="seriesButton"
+      data-series="Z">
+
+      Z
+
+    </button>
+
+    <button
+      class="seriesButton"
+      data-series="A">
+
+      A
+
+    </button>
+
+    <button
+      class="seriesButton"
+      data-series="NOTE">
+
+      NOTE
+
+    </button>
+
+    <button
+      class="seriesButton"
+      data-series="M">
+
+      M
+
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     YELLOW AREA
+========================= -->
+
+<section class="yellowFeature">
+
+  <div class="yellowBox">
+
+    <span class="yellowTag">
+      GALAXY COLLECTION
+    </span>
+
+    <h2>
+      New generation.
+      <br>
+      Famous classics.
+    </h2>
+
+    <p>
+      Open any model to enter its own
+      full-screen information page.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     COLLECTION
+========================= -->
+
+<section class="collection">
+
+  <div class="collectionHeader">
+
+    <h2>
+      Galaxy Models
+    </h2>
+
+    <span id="modelCount">
+      0 MODELS
+    </span>
+
+  </div>
+
+  <div
+    class="modelGrid"
+    id="modelGrid">
+  </div>
+
+</section>
+
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+  <strong>SAMSUNG SAME</strong>
+
+  <br><br>
+
+  M POPAL · Galaxy collection
+
+</footer>
+
+
+<!-- =========================
+     SIDE MENU
+========================= -->
+
+<div
+  class="menuOverlay"
+  id="menuOverlay">
+
+  <aside
+    class="menuPanel">
+
+    <div class="menuLogo">
+
+      SAMSUNG
+      <span>SAME</span>
+
+    </div>
+
+    <button
+      class="menuItem"
+      id="closeMenu">
+
+      ✕ CLOSE MENU
+
+    </button>
+
+    <button
+      class="menuItem"
+      id="popularButton">
+
+      ★ POPULAR MODELS
+
+    </button>
+
+    <button
+      class="menuItem yellow"
+      id="latestButton">
+
+      ✦ NEW MODELS
+
+    </button>
+
+    <button
+      class="menuItem"
+      id="allButton">
+
+      ◈ ALL MODELS
+
+    </button>
+
+    <button
+      class="menuItem"
+      id="searchMenuButton">
+
+      ⌕ SEARCH
+
+    </button>
+
+    <button
+      class="menuItem"
+      id="topButton">
+
+      ↑ GO TO TOP
+
+    </button>
+
+  </aside>
+
+</div>
+
+
+<!-- =========================
+     DETAIL PAGE
+========================= -->
+
+<section
+  class="detailPage"
+  id="detailPage">
+
+  <div class="detailTop">
+
+    <button
+      class="detailButton"
+      id="backButton">
+
+      ←
+
+    </button>
+
+    <button
+      class="detailButton"
+      id="closeDetail">
+
+      ×
+
+    </button>
+
+  </div>
+
+
+  <div class="detailContent">
+
+    <div
+      class="detailSeries"
+      id="detailSeries">
+
+      GALAXY
+
+    </div>
+
+    <h2
+      class="detailName"
+      id="detailName">
+
+      MODEL
+
+    </h2>
+
+
+    <div
+      class="bigImageBox"
+      id="bigImageBox">
+
+    </div>
+
+
+    <div class="infoGrid">
+
+      <div class="infoBox">
+
+        <span>SERIES</span>
+
+        <strong id="infoSeries">
+          —
+        </strong>
+
+      </div>
+
+
+      <div class="infoBox">
+
+        <span>YEAR</span>
+
+        <strong id="infoYear">
+          —
+        </strong>
+
+      </div>
+
+
+      <div class="infoBox">
+
+        <span>CATEGORY</span>
+
+        <strong id="infoCategory">
+          —
+        </strong>
+
+      </div>
+
+
+      <div class="infoBox">
+
+        <span>STATUS</span>
+
+        <strong id="infoStatus">
+          —
+        </strong>
+
+      </div>
+
+    </div>
+
+
+    <div
+      class="descriptionBox"
+      id="infoDescription">
+
+      —
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<script>
+
+/* ==========================================
+   DATABASE
+========================================== */
+
+const models = [
+
+  {
+    name:"Galaxy S26 Ultra",
+    series:"S",
+    year:"2026",
+    category:"Ultra Flagship",
+    status:"NEW",
+    image:"images/s/Galaxy-S26-Ultra.jpg",
+    description:
+    "Galaxy S26 Ultra is part of Samsung's current S26 flagship generation."
+  },
+
+  {
+    name:"Galaxy S26+",
+    series:"S",
+    year:"2026",
+    category:"Flagship",
+    status:"NEW",
+    description:
+    "Galaxy S26+ is a large-screen member of the current S26 generation."
+  },
+
+  {
+    name:"Galaxy S26",
+    series:"S",
+    year:"2026",
+    category:"Flagship",
+    status:"NEW",
+    description:
+    "Galaxy S26 is the standard model of the current S26 flagship generation."
+  },
+
+  {
+    name:"Galaxy S25 Ultra",
+    series:"S",
+    year:"2025",
+    category:"Ultra Flagship",
+    status:"POPULAR",
+    description:
+    "A premium Galaxy S Ultra generation."
+  },
+
+  {
+    name:"Galaxy S25 Edge",
+    series:"S",
+    year:"2025",
+    category:"Flagship",
+    status:"POPULAR",
+    description:
+    "A distinctive Galaxy S model with a slim design direction."
+  },
+
+  {
+    name:"Galaxy S25 FE",
+    series:"S",
+    year:"2025",
+    category:"Fan Edition",
+    status:"POPULAR",
+    description:
+    "A Fan Edition member of the Galaxy S family."
+  },
+
+  {
+    name:"Galaxy Z Fold7",
+    series:"Z",
+    year:"2025",
+    category:"Foldable Flagship",
+    status:"NEW",
+    description:
+    "A book-style foldable Galaxy smartphone."
+  },
+
+  {
+    name:"Galaxy Z Flip7",
+    series:"Z",
+    year:"2025",
+    category:"Foldable",
+    status:"NEW",
+    description:
+    "A compact flip-style Galaxy foldable."
+  },
+
+  {
+    name:"Galaxy Z Fold6",
+    series:"Z",
+    year:"2024",
+    category:"Foldable Flagship",
+    status:"POPULAR",
+    description:
+    "A premium book-style foldable Galaxy."
+  },
+
+  {
+    name:"Galaxy Z Flip6",
+    series:"Z",
+    year:"2024",
+    category:"Foldable",
+    status:"POPULAR",
+    description:
+    "A compact Galaxy Z Flip generation."
+  },
+
+  {
+    name:"Galaxy A57 5G",
+    series:"A",
+    year:"2026",
+    category:"A Series",
+    status:"NEW",
+    description:
+    "A newer Galaxy A Series model."
+  },
+
+  {
+    name:"Galaxy A37 5G",
+    series:"A",
+    year:"2026",
+    category:"A Series",
+    status:"NEW",
+    description:
+    "A newer-generation Galaxy A Series model."
+  },
+
+  {
+    name:"Galaxy A55 5G",
+    series:"A",
+    year:"2024",
+    category:"A Series",
+    status:"POPULAR",
+    description:
+    "A recognized Galaxy A Series model."
+  },
+
+  {
+    name:"Galaxy A35 5G",
+    series:"A",
+    year:"2024",
+    category:"A Series",
+    status:"POPULAR",
+    description:
+    "A Galaxy A Series smartphone."
+  },
+
+  {
+    name:"Galaxy Note20 Ultra",
+    series:"NOTE",
+    year:"2020",
+    category:"Note Flagship",
+    status:"LEGEND",
+    description:
+    "One of the final major Galaxy Note generation models."
+  },
+
+  {
+    name:"Galaxy Note20",
+    series:"NOTE",
+    year:"2020",
+    category:"Note",
+    status:"LEGEND",
+    description:
+    "A final-generation Galaxy Note model."
+  },
+
+  {
+    name:"Galaxy Note10+",
+    series:"NOTE",
+    year:"2019",
+    category:"Note",
+    status:"LEGEND",
+    description:
+    "A premium Galaxy Note generation."
+  },
+
+  {
+    name:"Galaxy Note10",
+    series:"NOTE",
+    year:"2019",
+    category:"Note",
+    status:"LEGEND",
+    description:
+    "A compact member of the Galaxy Note generation."
+  },
+
+  {
+    name:"Galaxy M55 5G",
+    series:"M",
+    year:"2024",
+    category:"M Series",
+    status:"POPULAR",
+    description:
+    "A Galaxy M Series smartphone."
+  },
+
+  {
+    name:"Galaxy S24 Ultra",
+    series:"S",
+    year:"2024",
+    category:"Ultra Flagship",
+    status:"POPULAR",
+    description:
+    "A major Galaxy S Ultra model."
+  },
+
+  {
+    name:"Galaxy S23 Ultra",
+    series:"S",
+    year:"2023",
+    category:"Ultra Flagship",
+    status:"POPULAR",
+    description:
+    "A well-known Galaxy S Ultra generation."
+  }
+
+];
+
+
+/* ==========================================
+   ELEMENTS
+========================================== */
+
+const grid =
+  document.getElementById("modelGrid");
+
+const count =
+  document.getElementById("modelCount");
+
+const searchPanel =
+  document.getElementById("searchPanel");
+
+const searchInput =
+  document.getElementById("searchInput");
+
+const menuOverlay =
+  document.getElementById("menuOverlay");
+
+const detailPage =
+  document.getElementById("detailPage");
+
+
+/* ==========================================
+   RENDER MODELS
+========================================== */
+
+function renderModels(list){
+
+  grid.innerHTML="";
+
+  count.textContent =
+    list.length + " MODELS";
+
+
+  list.forEach(model=>{
+
+    const card =
+      document.createElement("article");
+
+    card.className="modelCard";
+
+
+    const status =
+      model.status==="NEW"
+      ? `<span class="newBadge">NEW</span>`
+      : "";
+
+
+    card.innerHTML=`
+
+      <div class="cardTop">
+
+        <span class="seriesBadge">
+          ${model.series}
+        </span>
+
+        ${status}
+
+      </div>
+
+
+      <small>
+        GALAXY · ${model.category}
+      </small>
+
+
+      <h3>
+        ${model.name.replace("Galaxy ","")}
+      </h3>
+
+
+      <div class="modelInfo">
+
+        ${model.year}
+
+      </div>
+
+
+      <div class="openArrow">
+        →
+      </div>
+
+    `;
+
+
+    card.addEventListener(
+      "click",
+      ()=>openDetail(model)
+    );
+
+
+    grid.appendChild(card);
+
+  });
+
+}
+
+
+/* ==========================================
+   SERIES FILTER
+========================================== */
+
+document
+.querySelectorAll(".seriesButton")
+.forEach(button=>{
+
+  button.addEventListener(
+    "click",
+    ()=>{
+
+      document
+      .querySelectorAll(".seriesButton")
+      .forEach(b=>
+        b.classList.remove("active")
+      );
+
+
+      button.classList.add("active");
+
+
+      const series =
+        button.dataset.series;
+
+
+      if(series==="ALL"){
+
+        renderModels(models);
+
+      }else{
+
+        renderModels(
+          models.filter(
+            model =>
+            model.series===series
+          )
+        );
+
+      }
+
+    }
+  );
+
+});
+
+
+/* ==========================================
+   SEARCH
+========================================== */
+
+document
+.getElementById("searchButton")
+.addEventListener(
+  "click",
+  toggleSearch
+);
+
+
+function toggleSearch(){
+
+  searchPanel
+  .classList
+  .toggle("active");
+
+
+  if(
+    searchPanel
+    .classList
+    .contains("active")
+  ){
+
+    setTimeout(
+      ()=>searchInput.focus(),
+      200
+    );
+
+  }
+
+}
+
+
+searchInput
+.addEventListener(
+  "input",
+  ()=>{
+
+    const q =
+      searchInput
+      .value
+      .toLowerCase()
+      .trim();
+
+
+    if(!q){
+
+      renderModels(models);
+
+      return;
+
+    }
+
+
+    const result =
+      models.filter(
+        model =>
+
+        model.name
+        .toLowerCase()
+        .includes(q)
+
+        ||
+
+        model.series
+        .toLowerCase()
+        .includes(q)
+
+        ||
+
+        model.year
+        .includes(q)
+
+      );
+
+
+    renderModels(result);
+
+  }
+);
+
+
+/* ==========================================
+   MENU
+========================================== */
+
+document
+.getElementById("menuButton")
+.addEventListener(
+  "click",
+  ()=>{
+    menuOverlay
+    .classList
+    .add("active");
+  }
+);
+
+
+document
+.getElementById("closeMenu")
+.addEventListener(
+  "click",
+  closeMenu
+);
+
+
+menuOverlay
+.addEventListener(
+  "click",
+  event=>{
+
+    if(
+      event.target===menuOverlay
+    ){
+
+      closeMenu();
+
+    }
+
+  }
+);
+
+
+function closeMenu(){
+
+  menuOverlay
+  .classList
+  .remove("active");
+
+}
+
+
+/* ==========================================
+   MENU ACTIONS
+========================================== */
+
+document
+.getElementById("allButton")
+.addEventListener(
+  "click",
+  ()=>{
+
+    renderModels(models);
+
+    closeMenu();
+
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
+
+  }
+);
+
+
+document
+.getElementById("popularButton")
+.addEventListener(
+  "click",
+  ()=>{
+
+    renderModels(
+      models.filter(
+        model =>
+        model.status==="POPULAR"
+        ||
+        model.status==="LEGEND"
+      )
+    );
+
+    closeMenu();
+
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
+
+  }
+);
+
+
+document
+.getElementById("latestButton")
+.addEventListener(
+  "click",
+  ()=>{
+
+    renderModels(
+      models.filter(
+        model =>
+        model.status==="NEW"
+      )
+    );
+
+    closeMenu();
+
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
+
+  }
+);
+
+
+document
+.getElementById("searchMenuButton")
+.addEventListener(
+  "click",
+  ()=>{
+
+    closeMenu();
+
+    setTimeout(
+      toggleSearch,
+      250
+    );
+
+  }
+);
+
+
+document
+.getElementById("topButton")
+.addEventListener(
+  "click",
+  ()=>{
+
+    closeMenu();
+
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
+
+  }
+);
+
+
+/* ==========================================
+   DETAIL PAGE
+========================================== */
+
+function openDetail(model){
+
+  document
+  .getElementById("detailSeries")
+  .textContent =
+    "GALAXY " + model.series;
+
+
+  document
+  .getElementById("detailName")
+  .textContent =
+    model.name;
+
+
+  document
+  .getElementById("infoSeries")
+  .textContent =
+    model.series;
+
+
+  document
+  .getElementById("infoYear")
+  .textContent =
+    model.year;
+
+
+  document
+  .getElementById("infoCategory")
+  .textContent =
+    model.category;
+
+
+  document
+  .getElementById("infoStatus")
+  .textContent =
+    model.status;
+
+
+  document
+  .getElementById("infoDescription")
+  .textContent =
+    model.description;
+
+
+  const imageBox =
+    document.getElementById(
+      "bigImageBox"
+    );
+
+
+  if(model.image){
+
+    imageBox.innerHTML=`
+
+      <img
+        src="${model.image}"
+        alt="${model.name}"
+        onerror="showImageError(this)">
+
+    `;
+
+  }else{
+
+    imageBox.innerHTML=`
+
+      <div class="noImage">
+
+        <div style="
+          font-size:60px;
+          margin-bottom:15px;
+        ">
+          ◈
+        </div>
+
+        <strong>
+          PHOTO WILL BE ADDED
+        </strong>
+
+        <br><br>
+
+        This model is ready for
+        the photo stage.
+
+      </div>
+
+    `;
+
+  }
+
+
+  detailPage
+  .classList
+  .add("active");
+
+
+  document.body.style.overflow="hidden";
+
+}
+
+
+function showImageError(img){
+
+  img.parentElement.innerHTML=`
+
+    <div class="noImage">
+
+      <div style="
+        font-size:60px;
+        margin-bottom:15px;
+      ">
+        ◈
+      </div>
+
+      IMAGE NOT FOUND
+
+    </div>
+
+  `;
+
+}
+
+
+/* ==========================================
+   CLOSE DETAIL
+========================================== */
+
+document
+.getElementById("backButton")
+.addEventListener(
+  "click",
+  closeDetail
+);
+
+
+document
+.getElementById("closeDetail")
+.addEventListener(
+  "click",
+  closeDetail
+);
+
+
+function closeDetail(){
+
+  detailPage
+  .classList
+  .remove("active");
+
+  document.body.style.overflow="";
+
+}
+
+
+/* ==========================================
+   BLUE LIGHT TOUCH EFFECT
+========================================== */
+
+document.addEventListener(
+  "click",
+  event=>{
+
+    if(
+      event.target.closest("button")
+      ||
+      event.target.closest(".modelCard")
+    ){
+
+      const ripple =
+        document.createElement("div");
+
+      ripple.className="ripple";
+
+      ripple.style.left =
+        event.clientX+"px";
+
+      ripple.style.top =
+        event.clientY+"px";
+
+      document.body
+      .appendChild(ripple);
+
+
+      setTimeout(
+        ()=>ripple.remove(),
+        750
+      );
+
+    }
+
+  }
+);
+
+
+/* ==========================================
+   INITIAL
+========================================== */
+
+renderModels(models);
+
+</script>
+
+</body>
+</html>
